@@ -3,17 +3,31 @@
 
 <div class="container mt-4">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3>Daftar Sales</h3>
-        <a href="{{ route('sales.create') }}" class="btn btn-warning">
-            <i class="bi bi-plus-circle"></i> Buat Transaksi
-        </a>
+    <!-- Header -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body d-flex flex-wrap justify-content-between align-items-center">
+            <h4 class="mb-2 mb-md-0">
+                <i class="bi bi-receipt me-2 text-info"></i> Daftar Sales
+            </h4>
+            <div class="d-flex gap-2">
+                <form method="GET" action="{{ route('sales.index') }}" class="d-flex">
+                    <input type="text" name="search" class="form-control form-control-sm" placeholder="Cari sales..." value="{{ request('search') }}">
+                    <button class="btn btn-sm btn-outline-secondary ms-1">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+                <a href="{{ route('sales.create') }}" class="btn btn-info">
+                    <i class="bi bi-plus-circle"></i> Buat Transaksi
+                </a>
+            </div>
+        </div>
     </div>
 
-    <div class="card shadow-sm">
-        <div class="card-body p-0">
-            <table class="table table-striped table-hover mb-0">
-                <thead class="table-light">
+    <!-- Table -->
+    <div class="card shadow-sm border-0">
+        <div class="table-responsive">
+            <table class="table table-borderless align-middle mb-0">
+                <thead class="table-info text-dark">
                     <tr>
                         <th>Tanggal</th>
                         <th>Customer</th>
@@ -34,14 +48,14 @@
                                 </span>
                             </td>
                             <td class="text-center">
-                                <a href="{{ route('sales.show', $s) }}" class="btn btn-sm btn-info">
-                                    <i class="bi bi-eye"></i> Detail
+                                <a href="{{ route('sales.show', $s) }}" class="btn btn-sm btn-outline-info" title="Detail">
+                                    <i class="bi bi-eye"></i>
                                 </a>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center">Belum ada data sales</td>
+                            <td colspan="5" class="text-center text-muted">Belum ada data sales</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -49,6 +63,7 @@
         </div>
     </div>
 
+    <!-- Pagination -->
     <div class="d-flex justify-content-end mt-3">
         {{ $sales->links() }}
     </div>

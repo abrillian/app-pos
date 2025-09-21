@@ -2,37 +2,33 @@
 @section('content')
 
 <div class="container mt-4">
-    <h3 class="mb-4">Detail Transaction</h3>
+    <h4 class="mb-3">Detail Transaction</h4>
 
-    <div class="card shadow-sm">
-        <div class="card-header bg-info text-white">
+    <div class="card border shadow-sm">
+        <div class="card-header bg-light">
             Informasi Transaction
         </div>
-        <div class="card-body">
-            <div class="row mb-2">
-                <div class="col-md-4"><strong>Sale ID:</strong></div>
-                <div class="col-md-8">{{ $transaction->sale->id }}</div>
-            </div>
-            <div class="row mb-2">
-                <div class="col-md-4"><strong>Customer:</strong></div>
-                <div class="col-md-8">{{ $transaction->sale->customer->nama_customer }}</div>
-            </div>
-            <div class="row mb-2">
-                <div class="col-md-4"><strong>Item:</strong></div>
-                <div class="col-md-8">{{ $transaction->item->nama_item }}</div>
-            </div>
-            <div class="row mb-2">
-                <div class="col-md-4"><strong>Quantity:</strong></div>
-                <div class="col-md-8">{{ $transaction->quantity }}</div>
-            </div>
-            <div class="row mb-2">
-                <div class="col-md-4"><strong>Price:</strong></div>
-                <div class="col-md-8">{{ number_format($transaction->price) }}</div>
-            </div>
-            <div class="row mb-2">
-                <div class="col-md-4"><strong>Amount:</strong></div>
-                <div class="col-md-8">{{ number_format($transaction->amount) }}</div>
-            </div>
+        <div class="card-body p-0">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>Sale ID:</strong> {{ $transaction->sale->id }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Customer:</strong> {{ $transaction->sale->customer->nama_customer }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Item:</strong> {{ $transaction->item->nama_item }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Quantity:</strong> {{ $transaction->quantity }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Price:</strong> {{ number_format($transaction->price) }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Amount:</strong> {{ number_format($transaction->amount) }}
+                </li>
+            </ul>
         </div>
     </div>
 </div>
